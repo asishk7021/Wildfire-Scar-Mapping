@@ -53,6 +53,7 @@ FLOGA/
   - Support for multiple remote sensing change detection benchmarks
   - Modular codebase for easy extension and experimentation
   - Custom config and dataset generation/processing code added for using the FLOGA dataset
+  - Explores triplet attention in conjunction with SSMs.
 
 ### [VM-UNet](./VM-UNet/) - Vision Mamba UNet
 **This directory contains an implementation of [VM-UNet](https://github.com/JCruan519/VM-UNet), a U-shaped segmentation network that leverages Vision State Space (VSS) blocks for efficient long-range dependency modeling.**
@@ -143,14 +144,24 @@ python train_MambaBCD.py --gpu_id 0 --mode test
 - **Labels**: Binary masks
 - **Resolution**: 10m-500m depending on sensor and application
 
-## Model Performance Comparison
+## Models Performance on FLOGA Dataset
 
-| Model | Architecture | Key Strength | Primary Use Case |
-|-------|-------------|--------------|------------------|
-| BAM-CD | CNN-based | Proven architecture | Burnt area mapping |
-| M-CD | Mamba Siamese | Linear complexity | General change detection |
-| ChangeMamba | Mamba variants | SOTA performance | Multi-task CD |
-| VM-UNet | Mamba U-Net | Medical segmentation | Segmentation tasks |
+All models evaluated on burnt area detection (Class 1: Burnt) with the following metrics:
+
+| Model Name | F1 (Burnt) | IoU (Burnt) | Precision (Burnt) | Recall (Burnt) | Accuracy (Burnt) |
+|------------|------------|-------------|-------------------|----------------|------------------|
+| UNet | 54.51 | 37.71 | 97.14 | 38.17 | 98.75 |
+| SNUNet | 93.08 | 87.07 | 96.16 | 90.25 | 99.73 |
+| FC-EF-DIFF | 40.59 | 26.74 | 80.37 | 29.13 | 97.79 |
+| FC-EF-CONC* | 78.99 | 65.27 | 96.18 | 67.01 | 99.29 |
+| ADHR-CDNET* | 90.66 | 82.91 | 92.30 | 89.07 | 99.63 |
+| BAM-CD | 94.14 | 88.92 | 96.27 | 92.10 | 99.77 |
+| ChangeFormer | 75.96 | 61.25 | 89.62 | 65.96 | 99.17 |
+| MambaCD* | 84.08 | 72.54 | 90.06 | 78.85 | 99.60 |
+| MambaCD with triplet attention | 77.38 | 63.11 | 77.84 | 76.93 | 99.82 |
+| M-CD* | 76.19 | 61.54 | 85.84 | 68.49 | 99.80 |
+
+*\* Best checkpoint; not average*
 
 ### Custom Dataset Integration
 1. Organize data following the expected structure (see individual READMEs)
