@@ -1,6 +1,6 @@
 # Wildfire Scar Mapping - Multi-Model Experimental Repository
 
-This repository contains a comprehensive collection of state-of-the-art deep learning models for wildfire scar mapping and change detection experiments using satellite imagery. The project focuses on wildfire detection and damage assessment using various architectures including CNNs, Transformers, and modern State Space Models (SSMs) like Mamba.
+This repository contains a comprehensive collection of state-of-the-art deep learning models for wildfire scar mapping and change detection experiments using satellite imagery. The project focuses on burnt area mapping using various architectures including UNets and modern State Space Models (SSMs) like Mamba.
 
 ## Project Overview
 
