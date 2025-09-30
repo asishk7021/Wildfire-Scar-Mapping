@@ -1,0 +1,11 @@
+**/__pycache__
+FLOGA/data
+**/flagged
+**/.ipynb_checkpoints
+**/.DS_Store
+**/.pytest_cache
+**/.ruff_cache
+**/.vscode
+**/.idea
+**/.vscode
+**/.vscode
